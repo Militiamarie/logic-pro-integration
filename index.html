@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Logic Pro Integration · Melitia Marie Productions</title>
+<style>
+:root{--bg:#07060a;--pink:#ff2bd6;--cyan:#22f0ff;--lime:#b6ff3b;--text:#f5f3ff;--muted:#a8a3b8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(circle at 20% 0%,rgba(255,43,214,.18),transparent 45%),radial-gradient(circle at 90% 30%,rgba(34,240,255,.14),transparent 40%),var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;min-height:100vh;padding:32px 18px 60px}
+main{max-width:860px;margin:0 auto}
+h1{font-size:clamp(30px,7vw,54px);line-height:1.05;text-transform:uppercase;letter-spacing:.04em;color:var(--pink);text-shadow:0 0 18px rgba(255,43,214,.6)}
+h1 span{color:var(--cyan);text-shadow:0 0 18px rgba(34,240,255,.6)}
+.lead{color:var(--muted);margin:14px 0 26px;font-size:17px;line-height:1.5}
+.note{border-left:3px solid var(--lime);padding:10px 14px;background:rgba(182,255,59,.07);margin-bottom:26px;font-size:14px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px;background:rgba(255,255,255,.03)}
+.card h2{font-size:16px;color:var(--cyan);margin-bottom:8px}
+.card p{font-size:14px;color:var(--muted);line-height:1.5}
+a{color:var(--lime)}
+pre{margin-top:26px;background:#000;border:1px solid rgba(255,43,214,.35);border-radius:14px;padding:16px;overflow:auto;font-size:13px;color:#e9e4ff}
+footer{margin-top:36px;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>Logic Pro <span>Integration</span></h1>
+<p class="lead">Starter kit for building plug-ins, MIDI tools and controllers that work with Apple Logic Pro — by Melitia Marie Productions.</p>
+<div class="note">There is no official public “Logic Pro SDK”. You integrate through Audio Units, Scripter, MIDI and control-surface protocols. See the README for details and links.</div>
+<div class="grid">
+<div class="card"><h2>Audio Units (AUv3)</h2><p>Instruments, effects and MIDI FX as app extensions — Mac and iPad. <a href="https://developer.apple.com/documentation/audiotoolbox/audio-unit-v3-plug-ins">Apple docs</a></p></div>
+<div class="card"><h2>Scripter (JavaScript)</h2><p>Logic's built-in MIDI FX scripting. Try <code>scripter/melitia-808-humanizer.js</code>. <a href="https://support.apple.com/guide/logicpro/use-scripter-lgce728c68f6/mac">Guide</a></p></div>
+<div class="card"><h2>Control surfaces</h2><p>Mackie Control, HUI, MIDI Learn, OSC and Logic Remote. <a href="https://support.apple.com/guide/logicpro-css/welcome/mac">Support guide</a></p></div>
+<div class="card"><h2>Adobe SDKs</h2><p>Creative SDK is retired. Today: Express Embed SDK, UXP, After Effects SDK. <a href="https://developer.adobe.com/express/embed-sdk/">Express Embed SDK</a></p></div>
+</div>
+<pre>// Scripter: pass-through with octave double
+function HandleMIDI(event) {
+  event.send();
+  if (event instanceof Note) {
+    event.pitch += 12;
+    event.send();
+  }
+}</pre>
+<footer>Melitia Marie Productions · OVERLORDZ</footer>
+</main>
+</body>
+</html>
